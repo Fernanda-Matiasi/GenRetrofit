@@ -46,8 +46,7 @@ class TarefaAdapter : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>(){
         holder.textResponsavel.text = tarefa.responsavel
         holder.textData.text = tarefa.data
         holder.switchCardAtivo.isChecked = tarefa.status
-        holder.textCategoria.text = tarefa.categoria
-
+        holder.textCategoria.text = tarefa.descricao
     }
 
     //Onde vamos dizer para o Adapter quantos itens temos na lista
