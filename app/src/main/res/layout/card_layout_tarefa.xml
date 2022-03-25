@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="403dp"
         android:background="#AE8FE8"
         android:orientation="vertical"
         android:padding="10dp">
@@ -66,10 +66,12 @@
             android:id="@+id/textCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:text="Categoria" />
+            android:minHeight="48dp"
+            android:text="Categoria "
+            android:textColor="#100F0F"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonDeletar"
@@ -77,5 +79,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Deletar Tarefa" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

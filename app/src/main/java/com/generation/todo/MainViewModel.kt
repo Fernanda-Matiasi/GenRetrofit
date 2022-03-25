@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,7 +22,10 @@ class MainViewModel @Inject constructor (
 
     val myCategoriaResponse: LiveData<Response<List<Categoria>>> = _myCategoriaResponse
 
+    val dataSelecionada =MutableLiveData<LocalDate>()
+
     init {
+        dataSelecionada.value = LocalDate.now()
         listCategoria()
     }
 
