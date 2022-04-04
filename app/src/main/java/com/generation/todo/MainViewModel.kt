@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.generation.todo.model.Categoria
+import com.generation.todo.model.Tarefa
 import com.generation.todo.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,10 +18,16 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor (
     val repository: Repository): ViewModel() {
+    //Atualização 04/04
+    var tarefaSelecionada: Tarefa? = null
 
     private var _myCategoriaResponse = MutableLiveData<Response<List<Categoria>>>()
 
     val myCategoriaResponse: LiveData<Response<List<Categoria>>> = _myCategoriaResponse
+
+    private val _myTarefaResponse = MutableLiveData<Response<List<Tarefa>>>()
+
+    val myTarefaResponse: LiveData<Response<List<Tarefa>>> = _myTarefaResponse
 
     val dataSelecionada =MutableLiveData<LocalDate>()
 
@@ -35,6 +42,39 @@ class MainViewModel @Inject constructor (
                 val response = repository.listCategoria()
                 _myCategoriaResponse.value = response
             } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun addTarefa(tarefa: Tarefa){
+        viewModelScope.launch {
+            try {
+                repository.addTarefa(tarefa)
+                listTarefas()
+            }catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun listTarefas(){
+        viewModelScope.launch {
+            try {
+                val response = repository.listTarefas()
+                _myTarefaResponse.value = response
+            }catch (e: Exception){
+                Log.e("Developer", "Error", e)
+            }
+        }
+    }
+    //Atualização 04/04
+    fun updateTarefa(tarefas: Tarefa){
+        viewModelScope.launch {
+            try {
+                repository.updateTarefa(tarefas)
+                listTarefas()
+            }catch (e: Exception){
                 Log.d("Erro", e.message.toString())
             }
         }
