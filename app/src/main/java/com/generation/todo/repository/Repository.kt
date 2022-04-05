@@ -23,4 +23,9 @@ class Repository {
     suspend fun updateTarefa(tarefas: Tarefa): Response<Tarefa>{
         return RetrofitInstance.api.updateTarefa(tarefas)
     }
+
+    // Atualização 05/04
+    suspend fun deleteTarefa(id: Long): Response<Tarefa>{
+        return RetrofitInstance.api.deleteTarefa(id)
+    }
 }

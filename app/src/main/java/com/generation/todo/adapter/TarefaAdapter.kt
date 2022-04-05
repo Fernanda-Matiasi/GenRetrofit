@@ -63,8 +63,9 @@ class TarefaAdapter(
                 mainViewModel.updateTarefa(tarefa)
             }
 
+        //Atualização 05/04
         holder.buttonDeletar.setOnClickListener {
-
+        mainViewModel.deleteTarefa(tarefa.id)
         }
     }
 

@@ -3,10 +3,7 @@ package com.generation.todo.api
 import com.generation.todo.model.Categoria
 import com.generation.todo.model.Tarefa
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -25,5 +22,11 @@ interface ApiService {
     @PUT("tarefa")
     suspend fun updateTarefa(
         @Body tarefa: Tarefa
+    ): Response<Tarefa>
+
+    //Atualização 05/04
+    @DELETE("tarefa/{id}")
+    suspend fun deleteTarefa(
+        @Path("id") valor: Long
     ): Response<Tarefa>
 }
